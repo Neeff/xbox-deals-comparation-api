@@ -6,15 +6,9 @@
 :queues:
   - [low_priority, 1]
   - [high_priority, 2] # high priority
-:schedule:
-  hello_world:
-    every: 1m   # Runs once per minute
-    class: HelloWorldJob
-    enable: true
-    queue: low_priority
-  
+:schedule:  
   update_currency: 
-    every: 12h #run job each hour
+    every: [12h, first_in: 1m]  #run job each 12 hours
     class: UpdateCurrencyJob
     enable: true
     queue: high_priority

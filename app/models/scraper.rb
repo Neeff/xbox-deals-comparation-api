@@ -1,6 +1,6 @@
 class Scraper 
 
-  def scraping_xbox_page(url, text,region,currency)
+  def scraping_xbox_page(url, text, region, currency)
     sales = []
     browser  = Watir::Browser.new :chrome, args: %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
     browser.goto(url)
