@@ -61,6 +61,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    ast (2.4.0)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -118,6 +119,8 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    parser (2.7.1.2)
+      ast (~> 2.4.0)
     pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -164,6 +167,8 @@ GEM
     rubyzip (2.3.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
+    scout_apm (2.6.7)
+      parser
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -220,6 +225,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.3)
   redis (~> 4.0)
+  scout_apm
   sidekiq
   sidekiq-scheduler (~> 2.2)
   spring
