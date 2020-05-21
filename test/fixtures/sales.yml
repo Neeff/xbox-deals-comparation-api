@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  name_game: MyString
+  old_price: MyString
+  new_price: MyString
+  link_to_xbox_site: MyString
+  region: MyString
+
+two:
+  status: MyString
+  name_game: MyString
+  old_price: MyString
+  new_price: MyString
+  link_to_xbox_site: MyString
+  region: MyString

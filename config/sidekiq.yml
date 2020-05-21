@@ -1,0 +1,29 @@
+# config/sidekiq.yml
+---
+:verbose: false
+:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+:timeout: 30
+:queues:
+  - [low_priority, 1]
+  - [high_priority, 2] # high priority
+:schedule:
+  hello_world:
+    every: 1m   # Runs once per minute
+    class: HelloWorldJob
+    enable: true
+    queue: low_priority
+  
+  update_currency: 
+    every: 12h #run job each hour
+    class: UpdateCurrencyJob
+    enable: true
+    queue: high_priority
+    description: petition for update data in model currency
+  
+  update_deals:
+    every: 5m
+    class: UpdateDealsJob
+    enable: true
+    queue: high_priority
+    description: active scraping of web and set values in db 
+    
