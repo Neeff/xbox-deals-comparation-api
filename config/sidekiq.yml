@@ -21,7 +21,7 @@
     description: petition for update data in model currency
   
   update_deals:
-    every: 10m
+    every: [24h, first_in: '2m']
     class: UpdateDealsJob
     enable: true
     queue: high_priority
