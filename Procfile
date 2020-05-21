@@ -1,0 +1,1 @@
+api: bundle exec sidekiq -c 5
