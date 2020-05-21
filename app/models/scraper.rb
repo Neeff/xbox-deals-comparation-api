@@ -1,8 +1,7 @@
 class Scraper 
 
-  def scraping_xbox_page(url, text, region, currency)
+  def scraping_xbox_page(browser, url, text, region, currency)
     sales = []
-    browser  = Watir::Browser.new :chrome, args: %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
     browser.goto(url)
     next_btn =  browser.link(text: text).wait_until(timeout: 60 ,&:present?)
     puts "next button is hidden?", next_btn.present?
@@ -75,7 +74,6 @@ class Scraper
       end
     end
     puts "cantidad de juegos", sales.count
-    browser.close
     return sales
 
  end
