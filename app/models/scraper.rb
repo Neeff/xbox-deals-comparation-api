@@ -1,6 +1,7 @@
 class Scraper 
 
   def self.scraping_xbox_page(browser, url, text, region, currency)
+    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     sales = []
     browser.goto(url)
     next_btn =  browser.link(text: text).wait_until(timeout: 60 ,&:present?)
@@ -73,6 +74,10 @@ class Scraper
       end
     end
     puts "Quantity of Deals", sales.count
+    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    elapsed = ending - starting
+    p "elapsed #{elapsed}"
+    return sales
  end
 end
 

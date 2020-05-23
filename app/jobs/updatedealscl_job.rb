@@ -1,5 +1,6 @@
 class UpdatedealsclJob < ApplicationJob
   queue_as :default
+  sidekiq_options retry: 5 
 
   def perform(*args)
     item = ["https://www.xbox.com/es-cl/games/xbox-one?cat=onsale&source=lp#%20c-hyperlink", 'Siguiente','cl','CLP']

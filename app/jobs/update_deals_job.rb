@@ -1,5 +1,6 @@
 class UpdateDealsJob < ApplicationJob
   queue_as :high_priority
+  sidekiq_options retry: 3
 
   def perform(*args)
     Sale.delete_all
