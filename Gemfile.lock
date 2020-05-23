@@ -201,10 +201,6 @@ GEM
     watir (6.16.5)
       regexp_parser (~> 1.2)
       selenium-webdriver (~> 3.6)
-    watir-rails (2.2.1)
-      rack
-      rails
-      watir (>= 6.0.0.beta4)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -231,7 +227,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
-  watir-rails
+  watir
 
 RUBY VERSION
    ruby 2.6.3p62

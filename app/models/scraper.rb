@@ -4,7 +4,6 @@ class Scraper
     sales = []
     browser.goto(url)
     next_btn =  browser.link(text: text).wait_until(timeout: 60 ,&:present?)
-    puts "next button is hidden?", next_btn.present?
     while next_btn.present? do
       browser.a(class: 'gameDivLink').wait_until(timeout: 200, &:present?) 
       data = browser.links(class: 'gameDivLink').to_a
@@ -73,7 +72,7 @@ class Scraper
         sales << x
       end
     end
-    puts "cantidad de juegos", sales.count
+    puts "quantity of deals", sales.count
     return sales
 
  end
