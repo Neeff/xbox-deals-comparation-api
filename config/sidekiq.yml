@@ -13,11 +13,25 @@
     enable: true
     queue: high_priority
     description: petition for update data in model currency
-  
-  update_deals:
-    every: [24h, first_in: '2m']
-    class: UpdateDealsJob
+    
+  update_deals_us: 
+    every: [24h, first_in: 2m]  #run job each 12 hours
+    class:  UpdatedealsusaJob 
     enable: true
     queue: high_priority
-    description: active scraping of web and set values in db 
+    description: petition for update data in model sale
+    
+  update_deals_cl: 
+    every: [24h, first_in: 4m]  #run job each 12 hours
+    class:  UpdatedealsclJob 
+    enable: true
+    queue: high_priority
+    description: petition for update data in model sale
+
+  update_deals_ar: 
+    every: [24h, first_in: 6m]  #run job each 12 hours
+    class:  UpdatedealsarJob 
+    enable: true
+    queue: high_priority
+    description: petition for update data in model sale
     
