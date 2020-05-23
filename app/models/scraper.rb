@@ -1,10 +1,6 @@
 class Scraper 
 
-<<<<<<< HEAD
-  def scraping_xbox_page(browser, url, text, region, currency)
-=======
   def self.scraping_xbox_page(browser, url, text, region, currency)
->>>>>>> update_scraper
     sales = []
     browser.goto(url)
     next_btn =  browser.link(text: text).wait_until(timeout: 60 ,&:present?)
@@ -76,19 +72,8 @@ class Scraper
         sales << x
       end
     end
-<<<<<<< HEAD
-    puts "quantity of deals", sales.count
-=======
     puts "Quantity of Deals", sales.count
->>>>>>> update_scraper
-    return sales
-
  end
-
- def format_data sales, data
-
- end
-
 end
 
 # scrape = Scraper.new
