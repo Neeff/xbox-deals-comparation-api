@@ -27,17 +27,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
  gem 'watir'
 
- gem 'active_model_serializers'
-
- gem 'money-rails'
-
  gem 'httparty'
 
  gem 'sidekiq'
- 
+
  gem 'sidekiq-scheduler', '~> 2.2'
 
- gem 'scout_apm'
+ gem 'sidekiq-batch'
+
+ gem 'fast_jsonapi'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

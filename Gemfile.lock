@@ -37,11 +37,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_model_serializers (0.10.10)
-      actionpack (>= 4.1, < 6.1)
-      activemodel (>= 4.1, < 6.1)
-      case_transform (>= 0.2)
-      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (6.0.3)
       activesupport (= 6.0.3)
       globalid (>= 0.3.6)
@@ -61,13 +56,10 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    ast (2.4.0)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
-    case_transform (0.2)
-      activesupport
     childprocess (3.0.0)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
@@ -75,6 +67,8 @@ GEM
     erubi (1.9.0)
     et-orbi (1.2.4)
       tzinfo
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.12.2)
     fugit (1.3.5)
       et-orbi (~> 1.1, >= 1.1.8)
@@ -86,7 +80,6 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    jsonapi-renderer (0.2.2)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -105,22 +98,11 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
-    monetize (1.9.4)
-      money (~> 6.12)
-    money (6.13.7)
-      i18n (>= 0.6.4, <= 2)
-    money-rails (1.13.3)
-      activesupport (>= 3.0)
-      monetize (~> 1.9.0)
-      money (~> 6.13.2)
-      railties (>= 3.0)
     msgpack (1.3.3)
     multi_xml (0.6.0)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    parser (2.7.1.2)
-      ast (~> 2.4.0)
     pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -167,8 +149,6 @@ GEM
     rubyzip (2.3.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
-    scout_apm (2.6.7)
-      parser
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -177,6 +157,8 @@ GEM
       rack (~> 2.0)
       rack-protection (>= 2.0.0)
       redis (>= 4.1.0)
+    sidekiq-batch (0.1.6)
+      sidekiq (>= 3)
     sidekiq-scheduler (2.2.2)
       redis (>= 3, < 5)
       rufus-scheduler (~> 3.2)
@@ -210,19 +192,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
   bootsnap (>= 1.4.2)
   byebug
+  fast_jsonapi
   httparty
   listen (~> 3.2)
-  money-rails
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3)
   redis (~> 4.0)
-  scout_apm
   sidekiq
+  sidekiq-batch
   sidekiq-scheduler (~> 2.2)
   spring
   spring-watcher-listen (~> 2.0.0)

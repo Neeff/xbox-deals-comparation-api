@@ -13,13 +13,11 @@ class UpdateCurrencyJob < ApplicationJob
         i["to"] == 'CLP' ? a<< { CLP: i["rate"] } : nil
         i["to"] == 'ARS' ? a<< { ARS: i["rate"] } : nil
         i["to"] == 'USD' ? a<< { USD: i["rate"] } : nil
-    
       end
       h[from.to_sym] = a
       a = []
-      
     end
-    element = Currency.all.count 
+    element = Currency.all.count
     create_currency(h, element)
 
   end
@@ -35,9 +33,8 @@ class UpdateCurrencyJob < ApplicationJob
        end
       end
       is_first_time == 0 ? Currency.create(currency_hash) : Currency.find_by(iso: currency_hash[:iso]).update(currency_hash)
-      p currency_hash
       currency_hash = {}
-      p "🎉"
-   end 
+   end
+   p "currencies updated 🎉"
   end
 end

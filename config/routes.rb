@@ -19,6 +19,4 @@ Rails.application.routes.draw do
 
    get 'currencies/get-currencies', to: 'currencies#get_currencies'
   end
-
-
 end
