@@ -1,7 +1,7 @@
 # config/sidekiq.yml
 ---
 :verbose: false
-:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 4 } %>
 :timeout: 30
 :queues:
   - [low_priority, 1]
@@ -16,7 +16,7 @@
     description: petition for update data in model currency
 
   update_deals_test:
-    every: [10m, first_in: 1m]
+    every: [24h, first_in: 2m]
     class: CreateClusterJob
     enable: true
     queue: default
