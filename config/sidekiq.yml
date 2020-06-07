@@ -16,8 +16,8 @@
     description: petition for update data in model currency
 
   update_deals_test:
-    every: [10m, first_in: 1m]
-    class: CreateClusterJob
+    every: [12h, first_in: 1m]
+    class: CreateOffersJob
     enable: true
     queue: default
     description: test job
