@@ -16,13 +16,8 @@
     description: petition for update data in model currency
 
   update_deals_test:
-<<<<<<< HEAD
-    every: [24h, first_in: 2m]
-    class: CreateClusterJob
-=======
     every: [12h, first_in: 1m]
     class: CreateOffersJob
->>>>>>> optimize_code
     enable: true
     queue: default
     description: test job
