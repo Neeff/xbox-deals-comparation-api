@@ -6,8 +6,6 @@ class CreateSales < ActiveRecord::Migration[6.0]
       t.string :old_price
       t.string :new_price
       t.string :link_to_xbox_site
-      t.string :region
-
       t.timestamps
     end
   end
