@@ -1,13 +1,21 @@
 class CreateOffersJob
   include Sidekiq::Worker
   sidekiq_options retry: 3
-  def perform(store)
+  def perform
+    stores =
+    [
+      { url: "https://www.xbox.com/en-us/games/xbox-one?cat=onsale", text: 'Next', region: 'us', currency: 'USD'},
+      { url: "https://www.xbox.com/es-cl/games/xbox-one?cat=onsale&source=lp#%20c-hyperlink", text: 'Siguiente', region:'cl',currency: 'CLP'},
+      { url: "https://www.xbox.com/es-ar/games/xbox-one?cat=onsale&source=lp", text: 'Siguiente', region: 'ar', currency: 'ARS'}
+    ]
+
     browser = Watir::Browser.new :chrome, args: %w[--headless --disable-gpu ]
-    Sale.where(region: store[2]).delete_all
-    p "Removed Offers 👍🏻"
-    deals = Scraper.scraping_xbox_page(browser, store[0], store[1], store[2], store[3])
+    Sale.delete_all
+    p "Removed Offers 👍"
+    raw_data = Scraper.scraper_page(browser, stores)
+    deals    = Scraper.proccess_data(raw_data)
     Sale.create(deals)
-    p "#{store[2].upcase} Region Offers Created 🎉"
+    p "Region Offers Created 🎉"
     browser.close
     p "Browser closed 😵"
   end
