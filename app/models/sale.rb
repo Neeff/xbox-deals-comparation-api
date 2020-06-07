@@ -1,21 +1,21 @@
 class Sale < ApplicationRecord
 
 def self.deals_ar
-  where(region: 'ar')
+  where(currency: 'ARS')
 end
 
 def self.deals_us
-  where(region: 'us')
+  where(currency:'USD')
 end
 
 def self.deals_cl
-  where(region: 'cl')
+  where(currency: 'CLP')
 end
 
 def self.count_by_region
   count_by_region = { }
-  pluck(:region).uniq.each do |region|
-    count_by_region[region.to_s] = where(region: region).count
+  pluck(:currency).uniq.each do |region|
+    count_by_region[region.to_s] = where(currency: region).count
   end
   count_by_region
 end
