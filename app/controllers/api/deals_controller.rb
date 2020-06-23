@@ -26,7 +26,18 @@ class Api::DealsController < ApplicationController
   end
 
   def group_by_name_game
-    data = Sale.group_by_name
+    data = Sale.group_by_games
+    render json: data.to_json, adapter: :json, status: 200
+  end
+
+  def new_data
+   data = Sale.process_data
+   render json: data.to_json, adapter: :json, status: 200
+  end
+
+  def obtain_one_game
+    r = Sale.name_similar(params[:name_game])
+    data = {name_game: params[:name_game], values: r}
     render json: data.to_json, adapter: :json, status: 200
   end
 

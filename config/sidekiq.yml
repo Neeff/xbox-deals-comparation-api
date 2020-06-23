@@ -1,23 +1,30 @@
 # config/sidekiq.yml
 ---
 :verbose: false
-:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 4 } %>
-:timeout: 30
+:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+:timeout: 40
 :queues:
   - [low_priority, 1]
   - [default, 2]
   - [high_priority, 2] # high priority
 :schedule:
   update_currency:
-    every: [12h, first_in: 1m]  #run job each 12 hours
+    every: [12h, first_in: 0s]  #run job each 12 hours
     class: UpdateCurrencyJob
     enable: true
     queue: high_priority
     description: petition for update data in model currency
 
-  update_deals_test:
-    every: [12h, first_in: 1m]
+  create_deals:
+    every: [12h, first_in: 0s]
     class: CreateOffersJob
     enable: true
     queue: default
-    description: test job
+    description: create offers
+
+  create_details_offer:
+    every: [12h, first_in: 2m]
+    class: CreateClusterJob
+    enable: true
+    queue: default
+    description: scraping for each page of game

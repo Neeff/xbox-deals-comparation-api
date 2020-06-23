@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     get 'deals/all', to: 'deals#get_all_deals'
     get 'deals/count-by-region', to: 'deals#quantity'
     get 'deals/group-by-name-game', to: 'deals#group_by_name_game'
-
+    get 'deals/new-data-format', to: 'deals#new_data'
+    get 'deals/game/:name_game', to: 'deals#obtain_one_game'
 
     ###################
 

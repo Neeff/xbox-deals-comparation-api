@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_061328) do
+ActiveRecord::Schema.define(version: 2020_06_14_175708) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "currencies", force: :cascade do |t|
@@ -24,18 +25,33 @@ ActiveRecord::Schema.define(version: 2020_05_19_061328) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "details", force: :cascade do |t|
+    t.bigint "sale_id"
+    t.string "banner"
+    t.text "description"
+    t.string "clasification_image"
+    t.string "clasification"
+    t.string "c_category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sale_id"], name: "index_details_on_sale_id"
+  end
+
   create_table "sales", force: :cascade do |t|
     t.string "status"
     t.string "name_game"
     t.string "old_price"
     t.string "new_price"
     t.string "link_to_xbox_site"
-    t.string "region"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "img"
     t.string "discount"
     t.string "currency"
+    t.string "rating"
+    t.string "data_bi_product"
+    t.index ["name_game"], name: "index_sales_on_name_game", opclass: :gin_trgm_ops, using: :gin
   end
 
+  add_foreign_key "details", "sales"
 end

@@ -1,6 +1,10 @@
 class Sale < ApplicationRecord
 
-  def self.deals_ar
+  scope :name_similar, ->(name) {
+                         quoted_name = ActiveRecord::Base.connection.quote_string(name)
+                         where("similarity(name_game, ?)>= 0.6", name)
+                         .order(Arel.sql("similarity(name_game, '#{quoted_name}') DESC")).take(3)}
+   def self.deals_ar
     where(currency: 'ARS')
   end
 
@@ -20,8 +24,14 @@ class Sale < ApplicationRecord
    count_by_region
   end
 
-  def self.group_by_name
-    all.group_by(&:name_game)
+  def self.group_by_games
+    all.group_by(&:data_bi_product)
+  end
+
+  def self.urls
+   offers_group =  all.group_by(&:data_bi_product)
+   all_urls =  offers_group.map{|offer| [offer[1].first[:link_to_xbox_site], offer[1].first[:id], offer[1].first[:data_bi_product]]}
+   all_urls
   end
 end
 
